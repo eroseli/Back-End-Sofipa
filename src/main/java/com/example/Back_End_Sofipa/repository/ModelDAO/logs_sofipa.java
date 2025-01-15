@@ -65,6 +65,11 @@ public class logs_sofipa {
 	public void setEstatus(String estatus) {
 		Estatus = estatus;
 	}
+
+	@Override
+	public String toString() {
+		return " id=" + id + ", Fecha=" + Fecha + ", Hora=" + Hora + ", Ip=" + Ip + ", Estatus=" + Estatus ;
+	}
 	
 	
 	

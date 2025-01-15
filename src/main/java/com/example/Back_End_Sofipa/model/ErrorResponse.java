@@ -5,25 +5,25 @@ public class ErrorResponse {
 	 private String mensaje;
      private String detalle;
 
-     public ErrorResponse(String message, String details) {
-         this.mensaje = message;
-         this.detalle = details;
+     public ErrorResponse(String mensaje, String detalle) {
+         this.mensaje = mensaje;
+         this.detalle = detalle;
      }
 
-     public String getMessage() {
+     public String getMensaje() {
          return mensaje;
      }
 
-     public void setMessage(String message) {
-         this.mensaje = message;
+     public void setMensaje(String mensaje) {
+         this.mensaje = mensaje;
      }
 
-     public String getDetails() {
+     public String getDetalle() {
          return detalle;
      }
 
-     public void setDetails(String details) {
-         this.detalle = details;
+     public void setDetalle(String detalle) {
+         this.detalle = detalle;
      }
 	
 }

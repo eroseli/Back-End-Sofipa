@@ -49,7 +49,9 @@ public class GuardFiltro extends OncePerRequestFilter  {
 		boolean	respuesta = securityService.validarAccesoFechaHora(logs_sofipa_); 		
 		
 		logs_sofipa_.setEstatus(respuesta?"CORRECTA":"INCORRECTA");
-		logsSofipaService.guardar(logs_sofipa_,logsRepository);
+		
+		logsSofipaService.guardar(logs_sofipa_,logsRepository); // Grabar en BD
+		System.out.println("Solicitud Entrante : Ruta = "+request.getRequestURL()+""+logs_sofipa_.toString()); // Presentar en Consola INFO petición
 		
 		if (respuesta) {
         	filterChain.doFilter(request, response);
@@ -64,8 +66,8 @@ public class GuardFiltro extends OncePerRequestFilter  {
 	
 	public String modelarRespuestaError() throws JsonProcessingException { // Modelar Respuesta Erronea
 		ErrorResponse errorResponse = new ErrorResponse(
-                "No Autorizado, Fuera del Rango de Acceso", 
-                "Hora Lunes a Viernes de 8:00 a 18:00"
+                "Solicitud No Autorizada, Fuera del Rango de Acceso", 
+                "Horario: Lunes a Viernes de 9:00 a 18:00"
         );
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResponse = objectMapper.writeValueAsString(errorResponse);
